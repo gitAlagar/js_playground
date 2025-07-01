@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<title>Game Launcher</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-color: #000;
+			overflow: hidden;
+		}
+
+		#logoAnimationId {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			z-index: 10;
+			background-color: black;
+		}
+
+		#originalImg {
+			width: 300px;
+			height: auto;
+			margin-bottom: 40px;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		#loaderImageWrapper {
+			position: relative;
+			width: 180px;
+			height: 8px;
+			overflow: hidden;
+		}
+
+		#loaderBase {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+		}
+
+		#loaderFill {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			z-index: 2;
+			transition: width 0.3s;
+		}
+
+		iframe#gameFrame {
+			width: 100%;
+			height: 100%;
+			border: none;
+			display: none;
+		}
+
+		#errorMessageId {
+			display: none;
+			color: red;
+			font-size: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body oncontextmenu="return false">
+
+	<!-- Loader UI -->
+	<div id="logoAnimationId">
+		<img id="originalImg" src="assets/image/logo.png" />
+		<div id="loaderImageWrapper">
+			<img id="loaderBase" src="assets/image/lodaer_base.png" />
+			<img id="loaderFill" src="assets/image/loder_fill.png" />
+		</div>
+	</div>
+
+	<!-- Game frame -->
+	<iframe id="gameFrame"></iframe>
+
+	<!-- Error -->
+	<div id="errorMessageId"></div>
+
+	<script src="./launcher.js"></script>
+</body>
+</html>
